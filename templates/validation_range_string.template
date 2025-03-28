@@ -1,0 +1,4 @@
+{ const std::vector<std::string> valid_values = { {{values}} };
+  if (std::find(valid_values.begin(), valid_values.end(), value) == valid_values.end()) {
+    throw std::runtime_error("{{error_message}}");
+  }}

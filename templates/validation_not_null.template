@@ -1,0 +1,1 @@
+if (value.empty()) { throw std::runtime_error("{{error_message}}"); }

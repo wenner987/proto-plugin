@@ -1,0 +1,11 @@
+{
+    "not_null": "if (value.empty()) { return std::make_pair(false, \"{{error_message}}\"); }",
+    "lt": "if (value >= {{value}}) { return std::make_pair(false, \"{{error_message}}\"); }",
+    "gt": "if (value <= {{value}}) { return std::make_pair(false, \"{{error_message}}\"); }",
+    "lte": "if (value > {{value}}) { return std::make_pair(false, \"{{error_message}}\"); }",
+    "gte": "if (value < {{value}}) { return std::make_pair(false, \"{{error_message}}\"); }",
+    "range": {
+        "int": "{ const std::vector<int32_t> valid_values = { {{values}} };\n  if (std::find(valid_values.begin(), valid_values.end(), value) == valid_values.end()) {\n    return std::make_pair(false, \"{{error_message}}\");\n  }}",
+        "string": "{ const std::vector<std::string> valid_values = { {{values}} };\n  if (std::find(valid_values.begin(), valid_values.end(), value) == valid_values.end()) {\n    return std::make_pair(false, \"{{error_message}}\");\n  }}"
+    }
+}

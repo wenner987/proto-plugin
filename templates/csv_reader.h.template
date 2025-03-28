@@ -1,0 +1,29 @@
+#pragma once
+
+#include <string>
+#include <vector>
+#include "{message_name}.pb.h"
+
+namespace com {
+namespace test {
+
+// Provides CSV read/write functionality for {message_name} proto messages.
+class {message_name}CsvReader {
+ public:
+  // Default CSV file name for {message_name} data.
+  static const char* DEFAULT_CSV_FILE;
+
+  // Reads {message_name} records from a CSV file.
+  // Returns a vector of {message_name} messages.
+  static std::vector<{message_name}> ReadFromFile(
+      const std::string& filename = DEFAULT_CSV_FILE);
+
+  // Writes {message_name} records to a CSV file.
+  // The messages will be written in CSV format.
+  static void WriteToFile(
+      const std::vector<{message_name}>& messages,
+      const std::string& filename = DEFAULT_CSV_FILE);
+};
+
+}  // namespace test
+}  // namespace com

@@ -1,0 +1,4 @@
+std::pair<bool, std::string> validate_{{field_name}}(const {{type_name}}& value) {
+    {{validations}}
+    return std::make_pair(true, "");
+}

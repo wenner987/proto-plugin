@@ -1,0 +1,18 @@
+std::pair<bool, std::string> LoadFromCsv(const std::string& filename, std::vector<{{message_name}}>& messages) {
+    rapidcsv::Document doc(filename);
+    
+    // Validate header
+    std::vector<std::string> expected_headers = { {{header}} };
+    auto headers = doc.GetColumnNames();
+    if (headers != expected_headers) {
+        return std::make_pair(false, "Invalid CSV header");
+    }
+    
+    // Read rows
+    for (size_t row = 0; row < doc.GetRowCount(); row++) {
+        {{message_name}} message;
+        {{read_fields}}
+    }
+    
+    return std::make_pair(true, "");
+}

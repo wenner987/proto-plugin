@@ -1,0 +1,6 @@
+std::string value = doc.GetCell<{{type_name}}>({{index}}, row);
+{
+    auto result = validate_{{field_name}}(value);
+    if (!result.first) { return result; }
+    message.set_{{field_name}}(value);
+}

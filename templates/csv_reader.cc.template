@@ -1,0 +1,31 @@
+#include "{{message_name}}_csv_reader.h"
+#include <algorithm>
+#include <stdexcept>
+
+namespace com {
+namespace test {
+
+bool {{message_name}}CsvReader::ReadFromFile(const std::string& file_path, std::vector<{{message_name}}>& messages) {
+    CSVDocument doc;
+    if (!doc.LoadFile("{{csv_file_name}}")) {
+        return false;
+    }
+
+    messages.clear();
+    for (int row = 1; row < doc.GetRowCount(); row++) {
+        {{message_name}} message;
+        {{{read_fields}}}
+        messages.push_back(message);
+    }
+    return true;
+}
+
+bool {{message_name}}CsvReader::WriteToFile(const std::string& file_path, const std::vector<{{message_name}}>& messages) {
+    CSVDocument doc;
+    doc.SetHeader({ {{{header}}} });
+    {{{write_fields}}}
+    return doc.SaveFile("{{csv_file_name}}");
+}
+
+} // namespace test
+} // namespace com
