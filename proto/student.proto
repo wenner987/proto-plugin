@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package com.test;
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+    string csv_file_name = 50000;
+    bool mark_extend = 50001;  // 修改为 bool 类型
+    string index = 50002;
+}
+
+extend google.protobuf.FieldOptions {
+    bool not_null = 51001;
+    int32 lt = 51002;
+    int32 gt = 51003;
+    int32 lte = 51004;
+    int32 gte = 51005;
+    string splitor = 51006;
+    string in_range = 51007;
+}
+
+message Student {
+    option (mark_extend) = true;
+    option (csv_file_name) = "student.csv";
+    option (index) = "name";
+
+    string name = 1 [(not_null) = true];
+    int32 age = 2 [(not_null) = true];
+    int32 score = 3;
+}
